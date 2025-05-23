@@ -3,7 +3,7 @@
 Anda dapat mencoba aplikasi MST Optimizer secara langsung melalui tautan berikut:
 ➡️ **[https://mst-optimizer.vercel.app/](https://mst-optimizer.vercel.app/)**
 
-[![Demo MST Optimizer](link_ke_gif_atau_screenshot_demo_anda.gif)] *Animasi singkat menunjukkan penggunaan aplikasi MST Optimizer.*
+![Tampilan Aplikasi MST Optimizer](MSTOptimizer/Macbook-Air.png)
 
 ### Cara Mencoba Demo:
 
