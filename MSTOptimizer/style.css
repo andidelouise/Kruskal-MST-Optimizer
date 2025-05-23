@@ -1,0 +1,561 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #3b82f6; /* Biru utama */
+    --secondary-color: #1e40af; /* Biru tua */
+    --accent-color: #10b981; /* Hijau aksen */
+    --danger-color: #ef4444; /* Merah bahaya */
+    --warning-color: #f59e0b; /* Kuning peringatan */
+    --bg-primary: #ffffff; /* Latar belakang utama */
+    --bg-secondary: #f8fafc; /* Latar belakang sekunder */
+    --bg-tertiary: #e2e8f0; /* Latar belakang tersier */
+    --text-primary: #1e293b; /* Teks utama */
+    --text-secondary: #64748b; /* Teks sekunder */
+    --border-color: #e2e8f0; /* Warna border */
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); /* Bayangan standar */
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1); /* Bayangan besar */
+}
+
+[data-theme="dark"] {
+    --bg-primary: #0f172a;
+    --bg-secondary: #1e293b;
+    --bg-tertiary: #334155;
+    --text-primary: #f1f5f9;
+    --text-secondary: #cbd5e1;
+    --border-color: #475569;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+    color: var(--text-primary);
+    min-height: 100vh;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transisi untuk tema */
+    line-height: 1.6;
+}
+
+.header {
+    background: var(--bg-primary);
+    box-shadow: var(--shadow);
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.header-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.logo-section {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 1.2rem;
+    box-shadow: var(--shadow);
+}
+
+.title-section h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent; /* Fallback */
+}
+
+.title-section p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-top: 0.25rem;
+}
+
+.header-controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.theme-toggle {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: var(--text-primary);
+    display: flex; /* Untuk ikon */
+    align-items: center; /* Untuk ikon */
+    justify-content: center; /* Untuk ikon */
+    width: 40px; /* Ukuran tetap untuk tombol tema */
+    height: 40px; /* Ukuran tetap untuk tombol tema */
+}
+
+.theme-toggle:hover {
+    background: var(--bg-tertiary);
+    transform: translateY(-2px);
+}
+
+.container {
+    max-width: 1400px;
+    margin: 2rem auto; /* Tambah margin atas bawah */
+    padding: 0 2rem; /* Padding kiri kanan, hapus padding atas bawah agar tidak double */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.card {
+    background: var(--bg-primary);
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1); /* Bayangan lebih baik */
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.card-icon {
+    width: 32px;
+    height: 32px;
+    min-width: 32px; /* Agar ikon tidak mengecil */
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1rem;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.form-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border-color); /* Border lebih tipis */
+    border-radius: 8px;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2); /* Shadow lebih halus */
+}
+
+.form-textarea {
+    min-height: 120px;
+    resize: vertical;
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace; /* Font Monospace yang lebih baik */
+}
+
+.btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center; /* Pusatkan konten tombol */
+    gap: 0.5rem;
+    text-decoration: none;
+    font-size: 0.9rem;
+    line-height: 1.5; /* Perbaiki line height tombol */
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px) scale(1.02); /* Efek hover lebih menarik */
+    box-shadow: var(--shadow-lg);
+}
+
+.btn-success {
+    background: linear-gradient(135deg, var(--accent-color), #059669);
+    color: white;
+}
+ .btn-success:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: var(--shadow-lg);
+}
+
+.btn-danger {
+    background: linear-gradient(135deg, var(--danger-color), #dc2626);
+    color: white;
+}
+.btn-danger:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: var(--shadow-lg);
+}
+
+.btn-secondary {
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+}
+.btn-secondary:hover {
+    background: var(--border-color); /* Sedikit lebih gelap saat hover */
+    transform: translateY(-2px) scale(1.02);
+}
+
+
+.btn-group {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap; /* Agar tombol pindah baris jika tidak cukup */
+    margin-top: 1rem; /* Jarak dari form group terakhir */
+}
+
+
+.result-section { /* Ini untuk bagian dalam kartu hasil */
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.03), rgba(16, 185, 129, 0.03));
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.result-header { /* Header di dalam result-section */
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.result-title { /* Judul di dalam result-section */
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.stats-grid { /* Grid untuk kartu metrik */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Lebar minimum lebih besar */
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.stat-card { /* Kartu metrik individual */
+    background: var(--bg-primary);
+    padding: 1.5rem; /* Padding lebih besar */
+    border-radius: 12px;
+    text-align: center;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow); /* Tambah shadow tipis */
+}
+.stat-icon {
+    width: 40px; /* Ukuran ikon */
+    height: 40px;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    color: white;
+    font-size: 1.25rem; /* Ukuran font ikon */
+}
+
+.stat-number {
+    font-size: 1.75rem; /* Angka lebih besar */
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 0.25rem;
+    line-height: 1.2; /* Perbaiki line height */
+}
+
+.stat-label {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+
+.edge-list {
+    background: var(--bg-secondary);
+    border-radius: 8px;
+    padding: 1rem;
+    max-height: 250px; /* Sedikit lebih pendek */
+    overflow-y: auto;
+    border: 1px solid var(--border-color);
+}
+
+.edge-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.6rem 0.25rem; /* Padding disesuaikan */
+    border-bottom: 1px solid var(--border-color);
+    font-size: 0.9rem; /* Ukuran font item edge */
+}
+
+.edge-item:last-child {
+    border-bottom: none;
+}
+
+.edge-connection {
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.edge-weight {
+    background: var(--accent-color);
+    color: white;
+    padding: 0.25rem 0.6rem; /* Padding disesuaikan */
+    border-radius: 6px; /* Radius disesuaikan */
+    font-size: 0.8rem;
+    font-weight: 500;
+    min-width: 40px; /* Agar bobot tidak terlalu sempit */
+    text-align: center;
+}
+
+.canvas-container {
+    background: var(--bg-secondary);
+    border-radius: 12px;
+    padding: 1rem;
+    border: 1px solid var(--border-color);
+    position: relative;
+    overflow: hidden; /* Penting agar canvas tidak keluar */
+    height: 420px; /* Beri tinggi tetap untuk container */
+}
+
+.canvas {
+    width: 100%;
+    height: 100%; /* Canvas mengisi container */
+    border-radius: 8px;
+    background: var(--bg-primary); /* Latar canvas */
+}
+
+
+.example-section {
+    grid-column: 1 / -1; /* Span full width */
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.03), rgba(245, 158, 11, 0.01));
+    border: 1px solid var(--border-color); /* Border standar */
+    border-left: 4px solid var(--warning-color); /* Aksen kiri */
+    border-radius: 16px;
+    padding: 2rem;
+    margin-top: 1rem;
+}
+
+.example-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+    color: var(--warning-color); /* Warna teks header contoh */
+}
+.example-header .card-icon { /* Gunakan style ikon yang sama */
+     background: var(--warning-color);
+}
+
+
+.example-tabs {
+    display: flex;
+    gap: 0.25rem;
+    margin-bottom: 1.5rem;
+    background: var(--bg-tertiary);
+    padding: 0.25rem;
+    border-radius: 8px;
+    overflow-x: auto; /* Agar bisa scroll jika tab banyak */
+}
+
+.example-tab {
+    padding: 0.5rem 1rem;
+    border: none;
+    background: transparent;
+    color: var(--text-secondary);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    white-space: nowrap; /* Agar teks tab tidak wrap */
+}
+
+.example-tab.active {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    box-shadow: var(--shadow);
+}
+
+.example-content {
+    display: none;
+    padding-top: 1rem; /* Jarak dari tab */
+}
+
+.example-content.active {
+    display: block;
+}
+.example-content h4 {
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+    font-weight: 600;
+}
+.example-content p {
+    margin-bottom: 1rem;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+
+.code-block {
+    background: var(--bg-secondary); /* Warna beda dari bg-tertiary tab */
+    border-radius: 8px;
+    padding: 1rem;
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+    font-size: 0.85rem;
+    line-height: 1.6; /* Line height lebih nyaman */
+    overflow-x: auto;
+    border: 1px solid var(--border-color);
+    color: var(--text-primary); /* Warna teks code block */
+}
+
+.loading { /* Indikator loading pada tombol */
+    display: inline-block;
+    width: 18px; /* Sedikit lebih kecil */
+    height: 18px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 0.8s linear infinite; /* Animasi lebih cepat */
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.alert {
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    border-left-width: 4px;
+    border-left-style: solid;
+    font-size: 0.9rem;
+}
+
+.alert-error {
+    background: rgba(239, 68, 68, 0.05); /* Latar lebih halus */
+    border-left-color: var(--danger-color);
+    color: var(--danger-color);
+}
+
+.alert-success { /* Belum digunakan, tapi bagus untuk ada */
+    background: rgba(16, 185, 129, 0.05);
+    border-left-color: var(--accent-color);
+    color: var(--accent-color);
+}
+
+#error-message { /* Kontainer untuk pesan error */
+    margin-top: 1rem;
+}
+
+
+@media (max-width: 992px) { /* Breakpoint tablet */
+    .container {
+        grid-template-columns: 1fr; /* Semua jadi 1 kolom */
+    }
+}
+
+@media (max-width: 768px) { /* Breakpoint mobile */
+    .header-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.5rem; /* Kurangi gap di header mobile */
+    }
+    .title-section h1 { font-size: 1.5rem; }
+    .title-section p { font-size: 0.8rem; }
+
+    .container { padding: 0 1rem; } /* Kurangi padding container */
+    .card { padding: 1.5rem; } /* Kurangi padding card */
+
+    .btn-group {
+        justify-content: center; /* Tombol di tengah pada mobile */
+        flex-direction: column; /* Tombol jadi vertikal */
+        gap: 0.5rem;
+    }
+    .btn { width: 100%; } /* Tombol full width */
+
+    .stats-grid {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); /* Kartu metrik lebih kecil */
+    }
+    .stat-number { font-size: 1.5rem; }
+    .stat-label { font-size: 0.75rem; }
+
+    .canvas-container { height: 350px; } /* Canvas lebih pendek */
+}
+
+.footer {
+    background: var(--bg-secondary);
+    border-top: 1px solid var(--border-color);
+    padding: 2rem 1rem; /* Padding disesuaikan */
+    text-align: center;
+    color: var(--text-secondary);
+    margin-top: 2rem;
+    font-size: 0.9rem;
+}
+
+.footer-content {
+    max-width: 1400px;
+    margin: 0 auto;
+}
