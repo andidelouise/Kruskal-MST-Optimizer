@@ -1,4 +1,4 @@
-## ✨ Demo Aplikasi
+## ✨ MST Optimizer
 
 Anda dapat mencoba aplikasi MST Optimizer secara langsung melalui tautan berikut:
 ➡️ **[https://mst-optimizer.vercel.app/](https://mst-optimizer.vercel.app/)**
